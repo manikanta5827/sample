@@ -1,0 +1,142 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: azure; font-family: Arial, Helvetica, sans-serif">
+    <div id="main">
+        CRUD WITH HTML CSS JAVASCRIPT
+        <div id="whitebox">
+            <div id="parent">
+                <h3 style="padding-right: 200px">Manage Mobiles</h3>
+                <button id="AddB" onclick="add()">Add Mobile</button>
+            </div>
+            <table style="font-weight: bold">
+               
+            </table>
+            <table id="table"></table>
+        </div>
+    </div>
+</body>
+<style>
+  #main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-size: 45px;
+    /* font-weight: bold; */
+    gap: 30px;
+    /* background-color: gray; */
+  }
+
+  #parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    border-style: solid;
+    border-radius: 10px;
+
+    padding: 10px;
+
+    margin: 0;
+  }
+
+  #AddB {
+    background-color: rgb(16, 174, 222);
+    padding: 10px;
+    font-size: 16px;
+    margin: 0;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: blanchedalmond;
+  }
+
+  #whitebox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 25px;
+    margin: 0;
+  }
+  td{
+      padding: 6px;
+      background-color: bisque;
+      border-style: solid;
+      border-radius: 2px;
+      border: none;
+  }
+  tr{
+      padding: 5px;
+  }
+  button{
+      padding: 10px;
+      font-size: 16px;
+  }
+</style>
+<script>
+    let tb = document.getElementById("table");
+   let i=0;
+    
+    function add() {
+      let text="";
+     i++;
+     if(i==1){
+      text=` <tr>
+                    <td> Mobile</td>
+                    <td>Price(Rs)</td>
+                    <td>Ram</td>
+                    <td>Storage</td>
+                    <td>Action</td> <!-- New column for delete button -->
+                </tr>`
+     }
+        
+        let mobile = prompt("Enter mobile Name");
+        let price = prompt("Enter price");
+        let Ram = prompt("Enter ram");
+        let Storage = prompt("Enter storage");
+        text +=`
+          <td>${mobile}</td>
+          <td>${price}</td>
+          <td>${Ram}</td>
+          <td>${Storage}</td>
+          <td><button onclick="update(this)">Update</button></td>
+          <td><button onclick="deleteRow(this)">Delete</button></td>
+      `;
+      tb.innerHTML+=text;
+    }
+
+    function deleteRow(btn) {
+        let row = btn.closest('tr'); // Find the closest ancestor <tr> element
+        row.remove(); // Remove the row from the DOM
+    }
+    function update(btn) {
+      row=btn.closest('tr');
+      let mobile = prompt("Enter mobile Name");
+        let price = prompt("Enter price");
+        let Ram = prompt("Enter ram");
+        let Storage = prompt("Enter storage");
+        text =`
+          <td>${mobile}</td>
+          <td>${price}</td>
+          <td>${Ram}</td>
+          <td>${Storage}</td>
+          <td><button onclick="update(this)">Update</button></td>
+          <td><button onclick="deleteRow(this)">Delete</button></td>`
+
+          row.innerHTML=text;
+          
+    }
+</script>
+</html>
